@@ -19,7 +19,7 @@ void create(dstack** st)
 	*st = NULL;
 }
 
-int empty(dstack* st)					//Проверка на пустоту
+int empty(dstack* st)					
 {
 	if (!st)
 		return 1;
@@ -27,7 +27,7 @@ int empty(dstack* st)					//Проверка на пустоту
 		return 0;
 }
 
-dstack* pushdstack(btree *x, dstack *st)			//Положить в стек
+dstack* pushdstack(btree *x, dstack *st)			
 {
 	dstack* r;
 	r = new dstack;
@@ -36,7 +36,7 @@ dstack* pushdstack(btree *x, dstack *st)			//Положить в стек
 
 	return r;
 }
-int popdstack(btree** x, dstack** st)			//Взять из стека
+int popdstack(btree** x, dstack** st)			
 {
 	dstack* r;
 	if (*st)
@@ -85,7 +85,7 @@ btree *readTree()
 	FILE *in = fopen("in.txt", "r");  
 	if (!in) 
 	{ 
-		printf("Ошибка открытия файла"); 
+		printf("Error opening file"); 
 		_getch(); 
 	
 	}
@@ -96,16 +96,16 @@ btree *readTree()
 	return root;
 }
 
-int isHaveEqual(btree *d, char elem)			// Поиск элемента
+int isHaveEqual(btree *d, char elem)			
 {
-	int equal = 0;					// Есть ли два одинаковых элемента?
+	int equal = 0;					// Yes or no
 	btree q, q1;
 	dstack* s;
 	create(&s);
 
 	while (d != NULL && !equal)
 	{
-		if (d->left != NULL && d->right != NULL)				// Прямой обход
+		if (d->left != NULL && d->right != NULL)				// direct detour
 		{
 			q = *d;
 			s = pushdstack(d->right, s);
@@ -146,9 +146,9 @@ int find(btree *d)
 	while (d && !equal)
 	{
 		
-		equal = isHaveEqual(d, d->data);	// Есть ли схожие с данным элементом?
+		equal = isHaveEqual(d, d->data);	// Is there something similar to this element?
 
-		if (d->left != NULL && d->right != NULL)				// Прямой обход
+		if (d->left != NULL && d->right != NULL)				// direct detour
 		{
 			q = *d;
 			s = pushdstack(d->right, s);
